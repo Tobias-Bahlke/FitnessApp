@@ -1,0 +1,32 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.btn {
+  @include flex-center;
+  cursor: pointer;
+  box-shadow: none;
+  font-family: $font-family;
+  color: $color-text-primary;
+  padding: $button-padding-sm;
+  font-weight: $font-weight-bold;
+  border-radius: $button-border-radius-sm;
+  @include transition(background-color, 0.3s, ease);
+  border: $border-width $border-style $color-border-primary;
+
+  &:hover {
+    box-shadow: $box-shadow-light;
+  }
+
+  &:focus {
+    box-shadow: $box-shadow-dark;
+  }
+
+  &:active {
+    box-shadow: $box-shadow-medium;
+  }
+
+  &:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
+}

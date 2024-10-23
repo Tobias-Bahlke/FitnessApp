@@ -1,0 +1,44 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+input, textarea, select {
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  color: $color-text-primary;
+  padding: $input-padding-md;
+  background-color: $transparent;
+  border-radius: $input-border-radius-md;
+  border: $border-width $border-style $color-border-primary;
+  @include transition(border-color 0.3s ease, box-shadow 0.3s ease);
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: $box-shadow-medium;
+    border-color: $color-border-secondary;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: $color-border-secondary;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-size: $font-size-xxs;
+  background-position: right $spacing-xs center;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><polygon points="0,0 12,0 6,6" fill="%23ececec"/></svg>');
+}
+
+option {
+  padding: $spacing-md;
+}

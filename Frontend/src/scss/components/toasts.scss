@@ -1,0 +1,142 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.p-toast {
+  top: 80px !important;
+  right: -12px !important;
+  z-index: 1000 !important;
+  position: fixed !important;
+}
+
+.p-toast-message {
+  @include flex-center;
+  width: 360px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  box-shadow: $box-shadow-medium !important;
+  border-radius: $border-radius-sm !important;
+  background-color: $color-background-primary !important;
+
+  .p-toast-summary,
+  .p-toast-detail {
+    font-size: $font-size-sm !important;
+  }
+
+  .p-toast-summary {
+    color: $color-text-primary !important;
+    font-weight: $font-weight-bold !important;
+  }
+
+  .p-toast-detail {
+    color: $color-text-secondary !important;
+    font-weight: $font-weight-medium !important;
+  }
+
+  .p-toast-message-icon {
+    display: flex !important;
+    flex-shrink: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    .p-icon {
+      width: 22px !important;
+      height: 22px !important;
+      margin-top: $spacing-xxs !important;
+    }
+  }
+
+  .p-toast-icon-close {
+    top: 8px !important;
+    right: 10px !important;
+    width: 24px !important;
+    height: 24px !important;
+    border: none !important;
+    display: flex !important;
+    cursor: pointer !important;
+    margin-left: auto !important;
+    position: absolute !important;
+    align-items: center !important;
+    color: $color-white !important;
+    justify-content: center !important;
+    border-radius: $border-radius-md !important;
+    background-color: $color-background-primary !important;
+
+    &:hover {
+      padding: 0 !important;
+      box-shadow: none !important;
+      background-color: $color-background-secondary !important;
+    }
+
+    button {
+      display: none !important;
+    }
+
+    .p-icon-wrapper .p-icon.p-toast-icon-close-icon:hover {
+      box-shadow: none !important;
+      color: $color-white !important;
+      background-color: $transparent !important;
+    }
+  }
+
+  .p-ripple .p-element .p-toast-icon-close {
+    border: none !important;
+    background-color: $transparent !important;
+  }
+
+  &-success {
+    background-color: $color-success !important;
+    border-left: 5px $border-style $color-success !important;
+
+    .p-toast-summary {
+      color: $color-text-primary !important;
+      font-weight: $font-weight-bold !important;
+    }
+
+    .p-toast-detail {
+      color: $color-text-secondary !important;
+    }
+  }
+
+  &-info {
+    background-color: $color-info !important;
+    border: $border-width $border-style $color-info !important;
+
+    .p-toast-summary {
+      color: $color-text-primary !important;
+      font-weight: $font-weight-bold !important;
+    }
+
+    .p-toast-detail {
+      color: $color-text-secondary !important;
+    }
+  }
+
+  &-warn {
+    background-color: $color-warning !important;
+    border: $border-width $border-style $color-warning !important;
+
+    .p-toast-summary {
+      color: $color-text-primary !important;
+      font-weight: $font-weight-bold !important;
+    }
+
+    .p-toast-detail {
+      color: $color-background-primary !important;
+    }
+  }
+
+  &-error {
+    background-color: $color-danger !important;
+    border-left: 5px $border-style $color-danger !important;
+
+    .p-toast-summary {
+      color: $color-text-primary !important;
+      font-weight: $font-weight-bold !important;
+    }
+
+    .p-toast-detail {
+      color: $color-text-secondary !important;
+    }
+  }
+}

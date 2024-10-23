@@ -1,0 +1,16 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.p-tooltip-arrow {
+  display: none !important;
+}
+
+.p-tooltip-text {
+  font-size: $font-size-xs !important;
+  color: $color-text-primary !important;
+  font-weight: $font-weight-medium !important;
+  border-radius: $border-radius-sm !important;
+  padding: $spacing-xxs $spacing-xs !important;
+  background-color: $color-background-dark !important;
+  border: $border-width $border-style $color-border-dark !important;
+}
