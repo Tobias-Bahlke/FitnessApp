@@ -1,0 +1,10 @@
+# Node modules
+/frontend/frontend/node_modules
+
+# Maven/Gradle build directory
+/backend/target
+/backend/build
+
+# IntelliJ files
+.idea/
+*.iml
