@@ -1,5 +1,5 @@
 # Node modules
-/frontend/frontend/node_modules
+/frontend/node_modules
 
 # Maven/Gradle build directory
 /backend/target
