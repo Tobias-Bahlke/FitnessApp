@@ -1,4 +1,4 @@
-package com.fitnessapp.backend.configuration.security;
+package com.fitnessapp.backend.configuration;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,26 +12,28 @@ import java.io.IOException;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class SimpleCorsFilter implements Filter {
+public class CorsConfig implements Filter {
 
     @Value("${app.client.url}")
     private String clientAppUrl;
 
+    @Value("${app.cors.allowed-methods}")
+    private String allowedMethods;
+
+    @Value("${app.cors.allowed-headers}")
+    private String allowedHeaders;
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
-        String origin = request.getHeader("Origin");
+        HttpServletResponse response = (HttpServletResponse) res;
 
-        if (origin != null && origin.equals(clientAppUrl)) {
-            response.setHeader("Access-Control-Allow-Origin", clientAppUrl);
-        }
-
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, HEAD");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "authorization, content-type, xsrf-token");
-        response.addHeader("Access-Control-Expose-Headers", "xsrf-token");
+        response.setHeader("Access-Control-Allow-Origin", clientAppUrl);
+        response.setHeader("Access-Control-Allow-Methods", allowedMethods);
+        response.setHeader("Access-Control-Allow-Headers", allowedHeaders);
         response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.addHeader("Access-Control-Expose-Headers", "xsrf-token");
 
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
